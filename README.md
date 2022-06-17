@@ -21,7 +21,9 @@ Splunk Enterprise Standalone installation on OCP via Splunk Operator
 * Deploy a standalone instance
 
 `oc create namespace splunk`
+
 `oc -n splunk adm policy add-scc-to-user nonroot -z default`
+
 `oc -n splunk create -f enterprisesplunk.yaml`
 
 * expose the Splunk web UI
