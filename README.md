@@ -5,6 +5,7 @@
 Splunk Enterprise Standalone installation on OCP via Splunk Operator
 
 * Download the splunk operator YAML
+
 `wget -O splunk-operator-install.yaml https://github.com/splunk/splunk-operator/releases/download/1.1.0/splunk-operator-install.yaml`
 
 * Deploy the operator
