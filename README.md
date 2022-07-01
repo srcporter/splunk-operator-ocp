@@ -34,3 +34,7 @@ Splunk Enterprise Standalone installation on OCP via Splunk Operator
 
 `oc -n splunk get secret splunk-splunk-secret -o json | jq -r '.data.password' | base64 -d`
 
+* Add the HTTP Event Collector destination to your system
+
+`https://splunk-s1-standalone-service.splunk.svc:8088/services/collector/event`
+
