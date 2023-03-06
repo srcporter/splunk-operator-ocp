@@ -34,7 +34,9 @@ Splunk Enterprise Standalone installation on OCP via Splunk Operator
 
 `oc -n splunk get secret splunk-splunk-secret -o json | jq -r '.data.password' | base64 -d`
 
-* Add the HTTP Event Collector destination to your system
+* To connect ACS to Splunk, you'll need to take two steps:
+* Log in to the Splunk UI, and navigate to the Data Inputs in the top right. Find the HTTP Event Collector (HEC). You'll need the token value from the HEC page.
+* In ACS, you'll need to create an integration for Splunk from the Platform Configuration -> Integrations menu. You'll need the HTTP Event collector token. For the endpoint, use the HTTP Event Collector destination:
 
 `https://splunk-s1-standalone-service.splunk.svc:8088/services/collector/event`
 
