@@ -6,15 +6,18 @@ Splunk Enterprise Standalone installation on OCP via Splunk Operator
 
 * Download the splunk operator YAML
 
-`wget -O splunk-operator-install.yaml https://github.com/splunk/splunk-operator/releases/download/1.1.0/splunk-operator-install.yaml`
+`wget -O splunk-operator-cluster.yaml https://github.com/splunk/splunk-operator/releases/download/2.5.2/splunk-operator-cluster.yaml`
 
 * Deploy the operator
 
-`oc create -f splunk-operator-install.yaml`
+`oc create -f splunk-operator-cluster.yaml`
 
-* Allow the SA for the Splunk Operator to use the 'nonroot' SCC
 
-`oc -n splunk-operator adm policy add-scc-to-user nonroot -z splunk-operator-controller-manager`
+* Allow the SA for the Splunk Operator to use the 'nonroot-v2' and 'anyuid' SCC
+
+`oc -n splunk-operator adm policy add-scc-to-user nonroot-v2 -z splunk-operator-controller-manager`
+
+`oc -n splunk-operator adm policy add-scc-to-user anyuid -z splunk-operator-controller-manager`
 
 * wait until the operator is running
 
@@ -22,7 +25,7 @@ Splunk Enterprise Standalone installation on OCP via Splunk Operator
 
 `oc create namespace splunk`
 
-`oc -n splunk adm policy add-scc-to-user nonroot -z default`
+`oc -n splunk adm policy add-scc-to-user nonroot-v2 -z default`
 
 `oc -n splunk create -f enterprisesplunk.yaml`
 
